@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
     public Tetromino heldTetromino = Tetromino.empty;
     public Sprite[] heldPieces;
     public SpriteRenderer currentHeldPiece;
+    public int[] next4tetrominoes = new int[4];
 
     //scoring
     public Text scoreText;
@@ -39,6 +40,11 @@ public class Board : MonoBehaviour
         {
             this.tetrominoes[i].Initialize();
         }
+
+        for (int i = 0; i < next4tetrominoes.Length; i++)
+        {
+            next4tetrominoes[i] = Random.Range(0, this.tetrominoes.Length);
+        }
     }
 
     private void Start()
@@ -46,17 +52,33 @@ public class Board : MonoBehaviour
         SpawnPiece();
     }
 
+    private void swap(ref int a, ref int b)
+    {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+
     public void SpawnPiece()
     {
-        int random = Random.Range(0, this.tetrominoes.Length);
+        int random = next4tetrominoes[0];
         TetrominoData data = this.tetrominoes[random];
+        
+        int i;
+        for (i = 0; i < next4tetrominoes.Length - 1; i++)
+        {   
+            swap(ref next4tetrominoes[i], ref next4tetrominoes[i + 1]);
+        }
+
+        next4tetrominoes[i] = Random.Range(0, this.tetrominoes.Length);
 
         this.activePiece.Initialize(this, this.spawnPosition, data);
         
         if(IsValidPosition(this.activePiece, this.spawnPosition))
         {
             Set(activePiece);
-        }else 
+        }
+        else 
         {
             GameOver();
         }

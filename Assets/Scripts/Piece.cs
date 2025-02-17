@@ -9,6 +9,7 @@ public class Piece : MonoBehaviour
     public Vector3Int[] cells {get; private set;}
     public TetrominoData data {get; private set;}
     public int rotationIndex {get; private set;}
+    public SpriteRenderer[] nextPieces;
 
     public float stepDelay = 1f;
     public float lockDelay = 0.5f;
@@ -81,8 +82,17 @@ public class Piece : MonoBehaviour
             Step();
         }
 
+        updateNextPieces();
         stepDelay = 1/(math.log(this.board.level + 1) + 1);
         this.board.Set(this);
+    }
+
+    private void updateNextPieces()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            nextPieces[i].sprite = this.board.heldPieces[this.board.next4tetrominoes[i]];
+        }
     }
 
     private void Hold()
