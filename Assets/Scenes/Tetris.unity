@@ -860,7 +860,7 @@ MonoBehaviour:
   heldTetromino: 7
   heldPieces:
   - {fileID: -2765868153542212566, guid: 4050c8aeccc594da495c0ef247373a7a, type: 3}
-  - {fileID: -7441005161214593125, guid: b4fb7e82c2a1b451db1ee55e8bdeb0b5, type: 3}
+  - {fileID: 6839527385770719229, guid: 4c3815b1e6bd74c6da488df5114c46f9, type: 3}
   - {fileID: -3667200254603492706, guid: 488260066f92e4b0d8c6136ee5f94a61, type: 3}
   - {fileID: -7836426634991908308, guid: db65bc64f504243588f279d4d262d6df, type: 3}
   - {fileID: 4270113466285674868, guid: 62ae1f0dd97a84e3b9127e41c5095adb, type: 3}
