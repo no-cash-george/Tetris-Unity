@@ -1,6 +1,8 @@
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.UI;
 
 public class Piece : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class Piece : MonoBehaviour
     public TetrominoData data {get; private set;}
     public int rotationIndex {get; private set;}
     public SpriteRenderer[] nextPieces;
+    public GameObject pauseMenu;
+    public Button resumeButton;
+    public Button exitButton;
+
 
     public float stepDelay = 1f;
     public float lockDelay = 0.5f;
@@ -17,6 +23,7 @@ public class Piece : MonoBehaviour
     private float stepTime;
     private float lockTime;
     private bool isAbleToHold = true;
+    private bool isPaused = false;
 
     public void Initialize(Board board, Vector3Int position, TetrominoData data)
     {   
@@ -38,6 +45,7 @@ public class Piece : MonoBehaviour
             this.cells[i] = (Vector3Int)data.cells[i];//initialize cells
         }
 
+        
     }
 
     private void Update()
@@ -76,7 +84,10 @@ public class Piece : MonoBehaviour
             Hold();
             isAbleToHold = false;
         }
-
+        if(Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+        {
+            Pause();
+        }
         if(Time.time >= this.stepTime)
         {
             Step();
@@ -85,6 +96,26 @@ public class Piece : MonoBehaviour
         updateNextPieces();
         stepDelay = 1/(math.log(this.board.level + 1) + 1);
         this.board.Set(this);
+
+        resumeButton.onClick.AddListener(Resume);
+        exitButton.onClick.AddListener(Exit);
+    }
+
+    private void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    private void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    private void Exit()
+    {
+        Application.Quit();
     }
 
     private void updateNextPieces()
