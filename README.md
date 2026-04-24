@@ -16,6 +16,10 @@ This project was developed to explore game logic complexity and grid-based movem
 * **Shaders:** ShaderLab
 
 ## 🎮 How to Play
+Download the builds on the releases tab
+
+or
+
 1. Clone the repository.
 2. Open the project in Unity Hub.
 3. Press **Play**.
