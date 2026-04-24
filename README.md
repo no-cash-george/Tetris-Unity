@@ -1,13 +1,30 @@
-# The game of Tetris recreated in Unity
+# Tetris Unity 🕹️
 
+A modern implementation of the classic Tetris game built with **Unity** and **C#**, featuring custom **ShaderLab** effects.
 
-## Controls
-W (Up arrow) - Hard drop
+## 🚀 Overview
+This project was developed to explore game logic complexity and grid-based movement. It transitions the traditional Tetris experience into a polished Unity environment.
 
-S (Down Arrow) - Soft drop
+## 🛠️ Technical Features
+* **Grid System:** Robust logic for managing the 20x10 playfield, handling row clearing, and collision detection.
+* **Dynamic Difficulty:** Implementation of increasing fall speeds as the player's score rises.
+* **Clean Code Architecture:** Organized C# scripts focusing on modularity and efficient state management.
 
-A,D (Left, Right arrow) - Left, Right
+## 💻 Technologies Used
+* **Engine:** Unity 2022+
+* **Language:** C#
+* **Shaders:** ShaderLab
 
-Q,E (?,/ key, Right shift) - Rotate Left, Right
+## 🎮 How to Play
+1. Clone the repository.
+2. Open the project in Unity Hub.
+3. Press **Play**.
+4. **Controls:**
+    * `Left / Right Arrows`: Move block.
+    * `Up Arrow`: Rotate.
+    * `Down Arrow`: Soft drop.
 
-Space - Hold piece
+## 📈 Learning Outcomes
+Through this project, I deepened my understanding of:
+* Real-time object manipulation and coordinate systems.
+* The lifecycle of MonoBehaviors in Unity.
